@@ -2,6 +2,7 @@
 //NOTE - if a problem with types go to (docs/types/optiontypes.md) and check the type you need
 import { EmbedBuilder, ChannelType } from 'discord.js';
 import { createClient } from '@supabase/supabase-js';
+import { hasPermission } from '../utils/permissions'; // Update the path as necessary
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -12,6 +13,8 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function execute(interaction) {
+    if (!(await hasPermission(interaction))) return; // from utils/permissions.js
+
     const channel = interaction.options.getChannel('channel');
     const amount = interaction.options.getInteger('amount');
     const reason = interaction.options.getString('reason') || 'No reason provided';

@@ -1,14 +1,17 @@
 // src/index.js
 import { config } from 'dotenv';
 import { Client, GatewayIntentBits, Collection, DefaultWebSocketManagerOptions } from 'discord.js';
+import { setupWelcome } from './events/welcome';
 import fs from 'fs';
 import path from 'path';
 
 config();
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds],
-
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers, // Make sure to request this intent
+    ],
 });
 DefaultWebSocketManagerOptions.identifyProperties.browser = 'Discord iOS'; 
 
@@ -29,6 +32,8 @@ for (const file of commandFiles) {
 client.once('ready', () => { // make this better later
   console.log('Ready!');
 });
+
+setupWelcome(client);
 
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;

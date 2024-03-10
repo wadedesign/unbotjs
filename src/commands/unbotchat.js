@@ -12,7 +12,6 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 async function execute(interaction) {
     const query = interaction.options.getString('askme');
 
-    // Load server information from the JSON file
     const serverInfoPath = path.join(__dirname, '..', 'server.json'); // could be the path unless changed
     const serverData = JSON.parse(fs.readFileSync(serverInfoPath, 'utf8'));
 
@@ -53,7 +52,7 @@ const command = {
         {
             name: 'askme',
             description: 'Your question or statement for the AI.',
-            type: 3, // Type 3 corresponds to STRING
+            type: 3,
             required: true,
         },
     ],
