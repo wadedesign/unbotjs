@@ -1,15 +1,17 @@
 // src/index.js
 import { config } from 'dotenv';
-import { Client, GatewayIntentBits, Collection } from 'discord.js';
+import { Client, GatewayIntentBits, Collection, DefaultWebSocketManagerOptions } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
 
-// Load the environment variables from the .env file
 config();
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
+
 });
+DefaultWebSocketManagerOptions.identifyProperties.browser = 'Discord iOS'; 
+
 
 client.commands = new Collection();
 
@@ -18,14 +20,13 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 
 for (const file of commandFiles) {
     import(path.join(commandsPath, file)).then(commandModule => {
-        // Adjust this line to use the default export directly
         client.commands.set(commandModule.default.name, commandModule.default);
-        console.log(`Loading command: ${commandModule.default.name}`); // Log the command being loaded
+        console.log(`Loading command: ${commandModule.default.name}`); // remove this in PROD
     });
 }
 
 
-client.once('ready', () => {
+client.once('ready', () => { // make this better later
   console.log('Ready!');
 });
 

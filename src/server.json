@@ -1,0 +1,98 @@
+{
+    "server_overview": {
+        "name": "UnInbox",
+        "description": "UnInbox - is a email service that is open source",
+        "premium_tier": "we got nun of that shi broutha",
+        "region": "MERICA BABY",
+        "preferred_locale": "English - BUT WE GOT A BOT TO HELP WITH THAT"
+    },
+    "created_me" : {
+        "name": "Wade",
+        "role": "bot daddy",
+        "contact": "wade#5"
+    },
+    "game_servers": {
+        "arma": {
+            "description": "Tactical and immersive gameplay.",
+            "servers": [
+                {"name": "Arma Server 1", "ip": "192.0.2.1", "port": 1234},
+                {"name": "Arma Server 2", "ip": "192.0.2.2", "port": 5678}
+            ]
+        },
+        "minecraft": {
+            "description": "Creative and survival worlds.",
+            "servers": [
+                {"name": "Minecraft Server 1", "ip": "203.0.113.1", "port": 25565},
+                {"name": "Minecraft Server 2", "ip": "203.0.113.2", "port": 25566},
+                {"name": "Minecraft Server 3", "ip": "203.0.113.3", "port": 25567}
+            ]
+        },
+        "dayz": {
+            "description": "Intense zombie survival experience.",
+            "servers": [
+                {"name": "DayZ Server 1", "ip": "198.51.100.1", "port": 2502}
+            ]
+        },
+        "other_games": {
+            "description": "Various other games and servers.",
+            "list": [
+                {"name": "Game1 Server1", "ip": "192.0.2.3", "port": 1234},
+                {"name": "Game2 Server1", "ip": "192.0.2.4", "port": 5678}
+            ]
+        }
+    },
+    "events_and_activities": {
+        "game_nights": {
+            "description": "Weekly game nights every Friday at 8 PM EST.",
+            "upcoming_events": [
+                {"name": "Event1", "date": "2024-12-22"},
+                {"name": "Event2", "date": "2024-12-22"}
+            ]
+        },
+        "special_events": {
+            "description": "Monthly tournaments and community challenges.",
+            "upcoming_events": [
+                {"name": "Tournament1", "date": "2024-12-22"},
+                {"name": "Challenge1", "date": "2024-12-22"}
+            ]
+        }
+    },
+    "community_management": {
+        "admins": {
+            "Admin1": {"role": "Head Administrator", "contact": "wade#5"},
+            "Admin2": {"role": "Community Manager", "contact": "doughboi#4"}
+
+        },
+        "moderation_policy": "Our guidelines and policies for a safe and enjoyable environment."
+    },
+    "server_bot": {
+        "description": "Custom bot for enhancing server management and member interaction.",
+        "features": [
+            "Automated role assignments",
+            "Event reminders",
+            "Moderation tools"
+        ]
+    },
+    "key_channels": {
+        "announcements": {"description": "Latest news and updates", "link": "#announcements"},
+        "rules": {"description": "Server guidelines and rules", "link": "#rules"},
+        "general_chat": {"description": "Daily conversations and discussions", "link": "#general"},
+        "bot_commands": {"description": "Bot commands and usage", "link": "#bot-commands"},
+        "game_servers": {"description": "Game server information and status", "link": "#game-servers"},
+        "events": {"description": "Upcoming events and activities", "link": "#events"}
+    },
+    "social_media": {
+        "twitter": {"description": "Latest news and updates", "link": "https://twitter.com/UnInbox"},
+        "facebook": {"description": "Community photos and videos", "link": "https://facebook.com/UnInbox"},
+        "instagram": {"description": "Behind the scenes and community highlights", "link": "https://instagram.com/UnInbox"}
+    },
+    "community_feedback": {
+        "feedback_channel": {"description": "Share your thoughts and suggestions", "link": "#feedback"},
+        "feedback_form": {"description": "Anonymous feedback form", "link": "https://forms.gle/UnInbox"}
+    },
+    "how to contribute to development": {
+        "description": "Contribute to the development of the server and bot.",
+        "contribution_guide": {"description": "Step-by-step guide to contributing", "link": "https://forms.gle/UnInbox"}
+    }
+}
+

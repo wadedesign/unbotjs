@@ -26,17 +26,14 @@ async function execute(interaction) {
 
         if (error) throw error;
 
-        // Initialize current_points and new_reasons
         let current_points = 0;
         let new_reasons = [reason];
 
-        // If user exists, update current_points and append reason
         if (data.length > 0) {
             current_points = data[0].karma_points;
             new_reasons = data[0].reasons ? [...data[0].reasons, reason] : [reason];
         }
 
-        // Upsert user data
         const { error: upsertError } = await supabase
             .from('karma')
             .upsert({
@@ -74,19 +71,19 @@ const command = {
         {
             name: 'user',
             description: 'The user to give karma to',
-            type: 6, // Type 6 corresponds to USER in the Discord API
+            type: 6, // Type 6 corresponds to USER 
             required: true,
         },
         {
             name: 'amount',
             description: 'The amount of karma points to give',
-            type: 4, // Type 4 corresponds to INTEGER in the Discord API
+            type: 4, // Type 4 corresponds to INTEGER 
             required: true,
         },
         {
             name: 'reason',
             description: 'The reason for giving karma',
-            type: 3, // Type 3 corresponds to STRING in the Discord API
+            type: 3, // Type 3 corresponds to STRING 
             required: false,
         },
     ],
