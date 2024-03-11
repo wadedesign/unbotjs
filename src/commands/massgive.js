@@ -2,7 +2,7 @@
 //NOTE - if a problem with types go to (docs/types/optiontypes.md) and check the type you need
 import { EmbedBuilder, ChannelType } from 'discord.js';
 import { createClient } from '@supabase/supabase-js';
-import { hasPermission } from '../utils/permissions'; // Update the path as necessary
+import { hasPermission } from '../utils/permissions'; 
 import dotenv from 'dotenv';
 dotenv.config();
 
