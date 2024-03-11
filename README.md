@@ -27,7 +27,7 @@ To run the bot locally, follow these steps:
 bun run unbot 
 ```
 
-## Slash Commands not loading? Don't freight
+## Slash Commands Not Loading? Don't Panic—It's Not the End of the World (Yet)!
 
 ```bash
 bun run register
