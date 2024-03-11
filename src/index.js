@@ -1,20 +1,21 @@
 // src/index.js
 import { config } from 'dotenv';
-import { Client, GatewayIntentBits, Collection, DefaultWebSocketManagerOptions } from 'discord.js';
+import { Client, GatewayIntentBits, Collection, DefaultWebSocketManagerOptions, ActivityType } from 'discord.js';
 import { setupWelcome } from './events/welcome';
+import { setupReady } from './events/ready';
+import { startLoading, finishLoading } from './utils/logUtility'; // log for the command loading time
 import fs from 'fs';
 import path from 'path';
-
 config();
 
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers, // Make sure to request this intent
+        GatewayIntentBits.GuildMembers, 
     ],
 });
-DefaultWebSocketManagerOptions.identifyProperties.browser = 'Discord iOS'; 
 
+DefaultWebSocketManagerOptions.identifyProperties.browser = 'Discord iOS'; 
 
 client.commands = new Collection();
 
@@ -22,18 +23,16 @@ const commandsPath = path.join(path.resolve(), 'src', 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
+    const commandName = file.replace('.js', ''); 
+    startLoading(commandName);
     import(path.join(commandsPath, file)).then(commandModule => {
         client.commands.set(commandModule.default.name, commandModule.default);
-        console.log(`Loading command: ${commandModule.default.name}`); // remove this in PROD
+        finishLoading(commandModule.default.name);
     });
 }
 
-
-client.once('ready', () => { // make this better later
-  console.log('Ready!');
-});
-
-setupWelcome(client);
+setupReady(client); // events/ready.js
+setupWelcome(client); // events/welcome.js
 
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
