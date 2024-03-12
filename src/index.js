@@ -4,6 +4,8 @@ import { Client, GatewayIntentBits, Collection, DefaultWebSocketManagerOptions }
 import { setupWelcome } from './events/welcome';
 import { setupReady } from './events/ready';
 import { startLoading, finishLoading } from './utils/logUtility'; // log for the command loading time
+import { setupInteractionCreate } from './events/interactionCreate'; 
+import { customizeWebSocket } from './utils/customizeWebSocket'; 
 import fs from 'fs';
 import path from 'path';
 config();
@@ -15,7 +17,7 @@ const client = new Client({
     ],
 });
 
-DefaultWebSocketManagerOptions.identifyProperties.browser = 'Discord iOS'; 
+customizeWebSocket(); // utils/customizeWebSocket.js
 
 client.commands = new Collection();
 
@@ -33,20 +35,6 @@ for (const file of commandFiles) {
 
 setupReady(client); // events/ready.js
 setupWelcome(client); // events/welcome.js
-
-client.on('interactionCreate', async interaction => {
-  if (!interaction.isCommand()) return;
-
-  const command = client.commands.get(interaction.commandName);
-
-  if (!command) return;
-
-  try {
-    await command.execute(interaction);
-  } catch (error) {
-    console.error(error);
-    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-  }
-});
+setupInteractionCreate(client); // events/interactionCreate.js will cretae diff folder for events
 
 client.login(process.env.DISCORD_TOKEN);
