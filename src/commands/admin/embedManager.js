@@ -1,4 +1,4 @@
-// src/commands/embedManager.js
+// src/commands/admin/embedManager.js
 import { EmbedBuilder, ChannelType } from 'discord.js';
 import { config } from 'dotenv';
 config();

@@ -1,4 +1,4 @@
-// src/commands/massgive.js
+// src/commands/admin/massgive.js
 //NOTE - if a problem with types go to (docs/types/optiontypes.md) and check the type you need
 import { EmbedBuilder, ChannelType } from 'discord.js';
 import { createClient } from '@supabase/supabase-js';
