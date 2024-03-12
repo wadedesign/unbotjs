@@ -1,3 +1,10 @@
+/**
+ * - Written by: Wade5
+ * 
+ * Please do not remove this header/credit when sharing this code with others.
+ * Also if changing could break the bot if you don't know 
+ */
+
 // scripts/registerCommands.js
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';

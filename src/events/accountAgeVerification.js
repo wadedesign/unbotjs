@@ -1,5 +1,11 @@
-// src/events/accountAgeVerification.js
+/**
+ * - Written by: Wade5
+ * 
+ * Please do not remove this header/credit when sharing this code with others.
+ */
 
+
+// src/events/accountAgeVerification.js
 //NOTE - havent tested this yet but should work just fine (the user will styill have access to channels with eveyrone has access tag)
 import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import dotenv from 'dotenv';
