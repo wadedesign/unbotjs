@@ -1,16 +1,18 @@
+// src/commands/admin/addrole.js
 import { EmbedBuilder, ActionRowBuilder, RoleSelectMenuBuilder } from 'discord.js';
+import { isUserAuthorized } from '../../utils/authorization'; // Adjust the path as necessary
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const moderatorIds = process.env.MODERATOR_IDS.split(',');
 const logChannelId = process.env.LOG_CHANNEL_ID;
 
 async function execute(interaction) {
-  if (!moderatorIds.includes(interaction.user.id)) {
-    await interaction.reply({ content: '❌ You do not have permission to use this command.', ephemeral: true });
-    return;
-  }
+    
+    if (!isUserAuthorized(interaction.user.id)) { // authorization check
+      await interaction.reply({ content: '❌ You do not have permission to use this command.', ephemeral: true });
+      return;
+    }
 
   try {
 
