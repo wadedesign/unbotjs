@@ -1,6 +1,6 @@
 // src/index.js
 import { config } from 'dotenv';
-import { Client, GatewayIntentBits, Collection, DefaultWebSocketManagerOptions } from 'discord.js';
+import { Client, GatewayIntentBits, Collection } from 'discord.js';
 import { setupWelcome } from './events/welcome';
 import { setupReady } from './events/ready';
 import { startLoading, finishLoading } from './utils/logUtility'; // log for the command loading time
