@@ -7,7 +7,7 @@ const targetUrl = process.env.TARGET_URL;
 export default {
     name: 'pingweb',
     description: 'Pings a predefined website to check if it is online',
-    options: [], // No options are needed for this command
+    options: [], 
     execute: async (interaction) => {
         try {
             const startTime = Date.now();
