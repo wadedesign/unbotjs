@@ -7,6 +7,7 @@ import { startLoading, finishLoading } from './utils/logUtility'; // log for the
 import { setupInteractionCreate } from './events/interactionCreate'; 
 import { customizeWebSocket } from './utils/customizeWebSocket'; 
 import { setupAccountAgeVerification } from './events/accountAgeVerification';
+import { setupPeriodicMessage } from './events/periodicMessage'; // Adjust the path as necessary
 import fs from 'fs';
 import path from 'path';
 config();
@@ -52,5 +53,6 @@ setupReady(client); // events/ready.js
 setupWelcome(client); // events/welcome.js
 setupInteractionCreate(client); // events/interactionCreate.js will cretae diff folder for events
 setupAccountAgeVerification(client); // events/captchaVerification.js
+setupPeriodicMessage(client); // events/periodicMessage.js
 
 client.login(process.env.DISCORD_TOKEN);

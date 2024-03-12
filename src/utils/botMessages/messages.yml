@@ -1,0 +1,6 @@
+messages:
+  - text: "UnInbox Information"
+    website: "https://example.com"
+    docs: "https://example.com/docs"
+    info: "This is some additional information about the first message."
+
