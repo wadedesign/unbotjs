@@ -45,6 +45,14 @@ bun run register
 5. Submit a pull request
 ```
 
+## Custom Functions
+
+This bot features a set of custom functions that you can leverage in your own projects using Discord.js. 
+
+These functions are documented in the `docs/extra` directory, with each function's documentation provided in an `.mdx` file for easy readability and integration.
+
+Every effort has been made to explain these functions as clearly and thoroughly as possible, to ensure you can utilize them effectively in your own Discord bot projects.
+
 ## Custom Emojis (I provide all the pngs for the emojis)
 > you just have to import them to your discord server
 
