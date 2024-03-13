@@ -1,4 +1,3 @@
-// src/commands/givekarma.js
 import { EmbedBuilder } from 'discord.js';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
@@ -27,22 +26,30 @@ async function execute(interaction) {
         if (error) throw error;
 
         let current_points = 0;
-        let new_reasons = [reason];
 
         if (data.length > 0) {
             current_points = data[0].karma_points;
-            new_reasons = data[0].reasons ? [...data[0].reasons, reason] : [reason];
         }
 
-        const { error: upsertError } = await supabase
+        const { error: karmaUpdateError } = await supabase
             .from('karma')
             .upsert({
                 user_id: user.id,
                 karma_points: current_points + amount,
-                reasons: new_reasons
             });
 
-        if (upsertError) throw upsertError;
+        if (karmaUpdateError) throw karmaUpdateError;
+
+        const { error: transactionError } = await supabase
+            .from('karma_transactions')
+            .insert([{
+                user_id: user.id,
+                karma_points_change: amount,
+                reason: reason,
+                transaction_date: new Date().toISOString(), 
+            }]);
+
+        if (transactionError) throw transactionError;
 
         const embed = new EmbedBuilder()
             .setTitle('🌟 Karma Update')
@@ -63,7 +70,6 @@ async function execute(interaction) {
     }
 }
 
-
 const command = {
     name: 'givekarma',
     description: 'Give karma points to a user with an optional reason.',
@@ -71,19 +77,19 @@ const command = {
         {
             name: 'user',
             description: 'The user to give karma to',
-            type: 6, // Type 6 corresponds to USER 
+            type: 6, 
             required: true,
         },
         {
             name: 'amount',
             description: 'The amount of karma points to give',
-            type: 4, // Type 4 corresponds to INTEGER 
+            type: 4, 
             required: true,
         },
         {
             name: 'reason',
             description: 'The reason for giving karma',
-            type: 3, // Type 3 corresponds to STRING 
+            type: 3, 
             required: false,
         },
     ],

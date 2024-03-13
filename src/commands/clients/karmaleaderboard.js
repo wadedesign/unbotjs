@@ -25,7 +25,7 @@ async function execute(interaction) {
         const embed = new EmbedBuilder()
             .setTitle(`🌟 Karma Leaderboard`)
             .setDescription(leaderboard)
-            .setColor(0x00FF00) // A green color for a positive vibe
+            .setColor(0x00FF00) 
             .setFooter({ text: 'Karma rankings are based on the total points each user has accumulated.' })
             .setTimestamp();
 
@@ -39,8 +39,11 @@ async function execute(interaction) {
 const command = {
     name: 'karmaleaderboard',
     description: 'Displays the top 15 users with the most karma.',
-    options: [], // This command does not require any options
+    options: [],
     execute,
 };
 
 export default command;
+
+
+// still good with db change
