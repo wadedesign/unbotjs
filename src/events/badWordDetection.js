@@ -1,3 +1,4 @@
+// src/events/badWordDetection.js
 require('dotenv').config();
 
 import { EmbedBuilder } from 'discord.js';
@@ -13,17 +14,17 @@ export function setupBadWordDetection(client) {
 
     try {
       const moderation = await openai.moderations.create({ input: message.content });
-      console.log("Moderation response:", moderation);
+      //console.log("Moderation response:", moderation);
       const containsBadWords = moderation.results.some(result => result.flagged);
 
       if (containsBadWords) {
-        console.log(`Message flagged for moderation. Banning user: ${message.author.tag}`);
+        //console.log(`Message flagged for moderation. Banning user: ${message.author.tag}`);
         const banReason = 'Using offensive language';
         const member = message.member;
 
         await member.ban({ reason: banReason });
         await message.delete();
-        console.log(`Message deleted and user banned: ${member.user.tag}`);
+        //console.log(`Message deleted and user banned: ${member.user.tag}`);
 
         const modLogsChannelId = process.env.LOG_CHANNEL_ID;
         const logChannel = await client.channels.fetch(modLogsChannelId);
@@ -37,13 +38,13 @@ export function setupBadWordDetection(client) {
             .setTimestamp();
 
           await logChannel.send({ embeds: [embed] });
-          console.log("Ban logged in mod-logs channel.");
+          //console.log("Ban logged in mod-logs channel.");
         } else {        }
       } else {
-        console.log("Message is clean. No action taken.");
+        //console.log("Message is clean. No action taken.");
       }
     } catch (error) {
-      console.error("Failed to check message for moderation. Error:", error);
+      //console.error("Failed to check message for moderation. Error:", error);
     }
   });
 }

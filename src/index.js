@@ -6,11 +6,11 @@ import { setupReady } from './events/ready';
 import { startLoading, finishLoading } from './utils/logUtility'; // log for the command loading time
 import { setupInteractionCreate } from './events/interactionCreate'; 
 import { setupBadWordDetection } from './events/badWordDetection';
-
+import { setupAntiRaidProtection } from './events/automod/antiRaidProtection'; // Assuming you have this
+import { setupAntiSpamMonitoring } from './events/automod/antiSpamMonitoring'; // Add this line
 import { customizeWebSocket } from './utils/customizeWebSocket'; 
 import { setupAccountAgeVerification } from './events/accountAgeVerification';
 import { setupPeriodicMessage } from './events/periodicMessage'; // Adjust the path as necessary
-
 import fs from 'fs';
 import path from 'path';
 config();
@@ -60,5 +60,7 @@ setupInteractionCreate(client); // events/interactionCreate.js will cretae diff 
 setupAccountAgeVerification(client); // events/captchaVerification.js
 setupPeriodicMessage(client); // events/periodicMessage.js
 setupBadWordDetection(client); // events/badWordDetection.js
+setupAntiRaidProtection(client); // events/antiRaidProtection.js
+setupAntiSpamMonitoring(client); // events/antiSpamMonitoring.js
 
 client.login(process.env.DISCORD_TOKEN);
