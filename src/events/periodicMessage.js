@@ -41,14 +41,16 @@ export const setupPeriodicMessage = (client) => {
             .setTitle(`${arrowOne} Hey, look at this!`) 
             .setFooter({ text: `Provided by Unbot` }) 
             .setTimestamp();
+
     
         await channel.send({
             content: `${arrowTwo} Gental Reminder:`,
-            embeds: [embed]
+            embeds: [embed],
+            allowedMentions: { parse: [] } // dont know why this is here was trying something
         });
     };
     
 
-    setInterval(sendMessage, 10000); // do for 7 hours = 25200000
+    setInterval(sendMessage, 25200000); // do for 7 hours = 25200000
 };
 

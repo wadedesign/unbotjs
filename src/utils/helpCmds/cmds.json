@@ -1,0 +1,43 @@
+[
+    {
+      "name": "ping",
+      "description": "Responds with Pong!",
+      "example": "/ping"
+    },
+    {
+      "name": "helpme",
+      "description": "Displays a list of available commands.",
+      "example": "/helpme"
+    },
+    {
+        "name":"botinfo",
+        "description":"Displays information about the bot.",
+        "example":"/botinfo"
+    },
+    {
+        "name":"givekarma",
+        "description":"Gives karma to a user.",
+        "example":"/givekarma @user amount reason"
+    },
+    {
+        "name":"karmaleaderboard",
+        "description":"Displays the top 15 users with the most karma.",
+        "example":"/karmaleaderboard"
+    },
+    {
+        "name":"ping",
+        "description":"Responds with Pong!",
+        "example":"/ping"
+    },
+    {
+        "name":"pingweb",
+        "description":"Pings the UnInbox website.",
+        "example":"/pingweb"
+    },
+    {
+        "name":"unbotchat",
+        "description":"Chat with the bot & get info about the uninbox",
+        "example":"/unbotchat message"
+    }
+  ]
+  

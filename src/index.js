@@ -5,9 +5,12 @@ import { setupWelcome } from './events/welcome';
 import { setupReady } from './events/ready';
 import { startLoading, finishLoading } from './utils/logUtility'; // log for the command loading time
 import { setupInteractionCreate } from './events/interactionCreate'; 
+import { setupBadWordDetection } from './events/badWordDetection';
+
 import { customizeWebSocket } from './utils/customizeWebSocket'; 
 import { setupAccountAgeVerification } from './events/accountAgeVerification';
 import { setupPeriodicMessage } from './events/periodicMessage'; // Adjust the path as necessary
+
 import fs from 'fs';
 import path from 'path';
 config();
@@ -16,6 +19,8 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers, 
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessages,
     ],
 });
 
@@ -54,5 +59,6 @@ setupWelcome(client); // events/welcome.js
 setupInteractionCreate(client); // events/interactionCreate.js will cretae diff folder for events
 setupAccountAgeVerification(client); // events/captchaVerification.js
 setupPeriodicMessage(client); // events/periodicMessage.js
+setupBadWordDetection(client); // events/badWordDetection.js
 
 client.login(process.env.DISCORD_TOKEN);
