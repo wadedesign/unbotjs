@@ -9,6 +9,10 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 async function execute(interaction) {
 
     const arrowOne = getCustomEmoji('arrowone');
+    const medalOne = getCustomEmoji('medalone');
+    const medalTwo = getCustomEmoji('medaltwo');
+    const medalThree = getCustomEmoji('medalthree');
+    const karmaOne = getCustomEmoji('karma');
 
   try {
     let { data, error } = await supabase
@@ -20,10 +24,10 @@ async function execute(interaction) {
 
     const topThreeEmbed = new EmbedBuilder()
       .setColor('#FFA500')
-      .setTitle(`${arrowOne} Karma Leaderboard: Top 3 Heroes ${arrowOne}`)
+      .setTitle(`${karmaOne} Karma Leaderboard: Top 3 Heroes`)
       .setDescription('Here are the champions standing at the podium:');
     data.slice(0, 3).forEach((user, index) => {
-      const rankEmoji = ['🥇', '🥈', '🥉'][index];
+      const rankEmoji = [`${medalOne}`, `${medalTwo}`, `${medalThree}`][index];
       const username = `<@${user.user_id}>`; // Assuming fetching username was successful
       topThreeEmbed.addFields({ name: `${rankEmoji} Rank ${index + 1}`, value: `${username} - \`${user.karma_points} points\``, inline: true });
     });
