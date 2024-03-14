@@ -1,8 +1,11 @@
 import commandsList from '../../utils/helpCmds/cmds.json';
 import { getCustomEmoji } from '../../utils/importEmojis/emojiUtils'; // util func
+import logCommandUsage from '../../utils/logger'; // Adjust the import path as needed
+
 import { EmbedBuilder } from 'discord.js';
 
 async function execute(interaction) {
+    //await logCommandUsage(command.name, interaction.user); // remove this if you dont want it loging to a channel
     // Using custom emoji function
     const arrowOne = getCustomEmoji('arrowone');
     const arrowTwo = getCustomEmoji('arrowtwo');

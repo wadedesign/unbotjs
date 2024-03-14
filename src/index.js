@@ -11,18 +11,12 @@ import { setupAntiSpamMonitoring } from './events/automod/antiSpamMonitoring'; /
 import { customizeWebSocket } from './utils/customizeWebSocket'; 
 import { setupAccountAgeVerification } from './events/accountAgeVerification';
 import { setupPeriodicMessage } from './events/periodicMessage'; // Adjust the path as necessary
+import client from './clientInstance'; // Adjust the path as necessary
 import fs from 'fs';
 import path from 'path';
 config();
 
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers, 
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMessages,
-    ],
-});
+
 
 customizeWebSocket(); // utils/customizeWebSocket.js
 client.commands = new Collection();

@@ -1,5 +1,6 @@
 // src/commands/unbotchat.js
 import { EmbedBuilder } from 'discord.js';
+import logCommandUsage from '../../utils/logger'; // Adjust the import path as needed
 import dotenv from 'dotenv';
 import OpenAI from "openai";
 import fs from 'fs';
@@ -10,6 +11,7 @@ dotenv.config();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 async function execute(interaction) {
+    await logCommandUsage(command.name, interaction.user); // remove this if you dont want it loging to a channel
     const query = interaction.options.getString('askme');
 
     const serverInfoPath = path.join(__dirname, '..', 'server.json'); // could be the path unless changed

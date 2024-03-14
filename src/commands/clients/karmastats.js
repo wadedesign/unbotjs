@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, codeBlock } from 'discord.js';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -32,16 +32,19 @@ async function execute(interaction) {
         const averageKarma = totalKarma / karmaData.length;
 
         const user = await interaction.client.users.fetch(highestKarma.user_id).catch(console.error);
+        const userMention = user ? `<@${user.id}>` : 'User not found';
 
+        // Constructing the embed
         const embed = new EmbedBuilder()
-            .setTitle('🌟 Karma Statistics')
-            .setColor(0x00FF00)
+            .setTitle('🌟 Karma Statistics 🌟')
+            .setColor(0x1E90FF) // A vibrant blue color
             .addFields(
                 { name: 'Total Karma Awarded', value: `${totalKarma} points`, inline: true },
                 { name: 'Average Karma per User', value: `${averageKarma.toFixed(2)} points`, inline: true },
-                { name: 'Highest Karma User', value: `${user ? user.username : 'User not found'} (${highestKarma.points} points)`, inline: false }
+                // Making the highest karma user directly mentionable
+                { name: 'Highest Karma User', value: `${userMention} with ${highestKarma.points} points`, inline: false }
             )
-            .setFooter({ text: `Stats requested by ${interaction.user.username} • ${new Date().toISOString()} UTC`, iconURL: interaction.user.displayAvatarURL() })
+            .setFooter({ text: `Stats requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() })
             .setTimestamp();
 
         await interaction.reply({ embeds: [embed] });
@@ -50,6 +53,7 @@ async function execute(interaction) {
         await interaction.reply({ content: `❌ An error occurred: ${error.message}`, ephemeral: true });
     }
 }
+
 
 const command = {
     name: 'karmastats',
