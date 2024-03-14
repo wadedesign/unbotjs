@@ -1,7 +1,7 @@
 // src/clientInstance.js
 import { Client, GatewayIntentBits } from 'discord.js';
 import { config } from 'dotenv';
-config(); // Ensure dotenv config is called if your environment variables are needed immediately
+config(); 
 
 const client = new Client({
     intents: [

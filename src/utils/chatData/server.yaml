@@ -1,0 +1,74 @@
+name: UnInbox Discord Server
+
+description: >
+  Our core infrastructure is designed from the ground up for effective communication between you and the rest of the world.
+
+  The webapp provides a flavoured experience of what email communication would be if it was re-imagined for how we communicate today.
+
+  Features like "team collaboration", "conversation notes" and "new sender screener" are native, making communication easier and more intuitive.
+
+  Built to work with your current email infrastructure or replace it entirely.
+
+  We're not here to kill email, we're bringing it up to date, killing inboxes along the way.
+
+  UnInbox isn't another email service, it's a better way to do email.
+
+  And email is just the start.
+
+owner:
+  - name: Omar
+  - nickname: mcpizza
+
+built the bot(only):
+  - name: Wade(Wade5)
+  - others: contrubutors
+social media:
+    - name: X(twitter)
+      link: https://twitter.com/uninbox
+    - name: Reddit
+      link: https://www.reddit.com/r/UnInbox/
+    - name: GitHub
+      link: https://github.com/un/inbox
+admins & moderators:
+    - uhh: none at the moment
+
+where can i contrubute to UnInbox?: >
+    you can go to https://github.com/un/inbox and make a pull request or open an issue and make sure its good
+    
+when will UnInbox release?: >
+    Omar has his hopes on March 2024, but can change at any time
+
+who has contrubuted to UnInbox?: 
+    - name: McPizza0
+    - name: BlankParticle
+    - name: skushagra9
+    - name: sean-brydon
+    - name: GinoGits
+    - name: affenity
+    - name: cstrnt
+    - name: adityadeshlahre
+    - name: daallgeier
+    - name: ErrolFernandes
+    - name: danielroe
+    - name: xMohamd
+    - name: babblebey
+    - name: chronark
+    - name: returnkirbo
+    - name: dependabot[bot]
+    - name: simonorzel26
+    - name: ezra-en
+    - name: WaitWhatJustHappened
+    - name: muescha
+    - name: iammohan01
+
+what is UnInbox website?: >
+    https://uninbox.com
+
+what are the rules of the server?:
+    - no spamming
+    - no NSFW content
+    - no hate speech
+    - no racism
+    - no sexism
+    - no homophobia
+    - keep things about UnInbox

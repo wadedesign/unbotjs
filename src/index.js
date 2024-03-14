@@ -10,12 +10,11 @@ import { setupAntiRaidProtection } from './events/automod/antiRaidProtection'; /
 import { setupAntiSpamMonitoring } from './events/automod/antiSpamMonitoring'; // Add this line
 import { customizeWebSocket } from './utils/customizeWebSocket'; 
 import { setupAccountAgeVerification } from './events/accountAgeVerification';
-import { setupPeriodicMessage } from './events/periodicMessage'; // Adjust the path as necessary
-import client from './clientInstance'; // Adjust the path as necessary
+import { setupPeriodicMessage } from './events/periodicMessage'; 
+import client from './clientInstance'; // where guild intents is 
 import fs from 'fs';
 import path from 'path';
 config();
-
 
 
 customizeWebSocket(); // utils/customizeWebSocket.js
