@@ -1,33 +1,53 @@
-// src/commands/ping.js
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, AttachmentBuilder } from 'discord.js';
 import logCommandUsage from '../../utils/logger';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
-const customEmoji = process.env.PINGME; 
-const successColor = '#00FF00'; 
+const customEmoji = process.env.PINGME;
+const successColor = '#FF9F1C'; // Bright orange color
+const loadingFrames = [
+  '⠋',
+  '⠙',
+  '⠹',
+  '⠸',
+  '⠼',
+  '⠴',
+  '⠦',
+  '⠧',
+  '⠇',
+  '⠏',
+];
 
-async function execute(interaction) {
-    await logCommandUsage(command.name, interaction.user);
-    const embed = new EmbedBuilder()
-        .setTitle(`${customEmoji} Pong!`)
-        .setDescription('im alive, lol!')
-        .setColor(successColor)
-        .addFields(
-            { name: 'Latency', value: `\`${Date.now() - interaction.createdTimestamp}ms\``, inline: true },
-            { name: 'API Latency', value: `\`${Math.round(interaction.client.ws.ping)}ms\``, inline: true }
-        )
-        .setFooter({ text: 'Pingerme' })
-        .setTimestamp();
+async function execute(_interaction_) {
+  await logCommandUsage(command.name, _interaction_.user);
 
-    await interaction.reply({ embeds: [embed] });
+  const loadingMessage = await _interaction_.reply(`Pinging ${loadingFrames[0]}`);
+
+  for (let i = 1; i < loadingFrames.length; i++) {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    await loadingMessage.edit(`Pinging ${loadingFrames[i]}`);
+  }
+
+
+  const embed = new EmbedBuilder()
+    .setTitle(`${customEmoji} Pong!`)
+    .setDescription('I\'m alive and ready to rock your world!')
+    .setColor(successColor)
+    .addFields(
+      { name: '⏱️ Latency', value: `\`${Date.now() - _interaction_.createdTimestamp}ms\``, inline: true },
+      { name: '⚡ API Latency', value: `\`${Math.round(_interaction_.client.ws.ping)}ms\``, inline: true }
+    )
+    .setTimestamp();
+
+  await loadingMessage.edit({ content: ' ', embeds: [embed],});
 }
 
 const command = {
-    name: 'ping',
-    description: 'Replies with Pong!',
-    options: [], 
-    execute, 
+  name: 'ping',
+  description: 'Replies with Pong!',
+  options: [],
+  execute,
 };
 
 export default command;
