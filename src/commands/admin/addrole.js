@@ -2,6 +2,8 @@
 import { EmbedBuilder, ActionRowBuilder, RoleSelectMenuBuilder } from 'discord.js';
 import { isUserAuthorized } from '../../utils/authorization'; // Adjust the path as necessary
 import dotenv from 'dotenv';
+import { handleError } from '../../utils/errorHandle/errorHandler'; // Adjust the import path as needed
+
 
 dotenv.config();
 
@@ -60,7 +62,7 @@ async function execute(interaction) {
     }
   } catch (error) {
     console.error('Error adding role:', error);
-    await interaction.reply({ content: `❌ An error occurred: ${error.message}`, ephemeral: true });
+    await handleError(error, interaction); // func errorhandler
   }
 }
 

@@ -1,6 +1,8 @@
 // src/commands/admin/kickuser.js
 import { EmbedBuilder } from 'discord.js';
 import dotenv from 'dotenv';
+import { handleError } from '../../utils/errorHandle/errorHandler'; // Adjust the import path as needed
+
 dotenv.config();
 
 const moderatorIds = process.env.MODERATOR_IDS.split(',');
@@ -41,7 +43,7 @@ async function execute(interaction) {
         }
     } catch (error) {
         console.error('Error kicking user:', error);
-        await interaction.reply({ content: `❌ An error occurred: ${error.message}`, ephemeral: true });
+        await handleError(error, interaction); // func errorhandler
     }
 }
 

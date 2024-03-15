@@ -1,6 +1,8 @@
 // src/commands/admin/embedManager.js
 import { EmbedBuilder, ChannelType } from 'discord.js';
 import { config } from 'dotenv';
+import { handleError } from '../../utils/errorHandle/errorHandler'; // Adjust the import path as needed
+
 config();
 
 export default {
@@ -53,7 +55,7 @@ export default {
             }
         } catch (error) {
             console.error(`Error in embedManager command: ${error}`);
-            await interaction.reply({ content: `Failed to parse JSON or send/update the embed. Error: ${error.message}`, ephemeral: true });
+            await handleError(error, interaction); // func errorhandler
         }
     },
 };
