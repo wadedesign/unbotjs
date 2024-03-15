@@ -1,5 +1,6 @@
 // src/commands/ping.js
 import { EmbedBuilder } from 'discord.js';
+import logCommandUsage from '../../utils/logger';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -7,6 +8,7 @@ const customEmoji = process.env.PINGME;
 const successColor = '#00FF00'; 
 
 async function execute(interaction) {
+    await logCommandUsage(command.name, interaction.user);
     const embed = new EmbedBuilder()
         .setTitle(`${customEmoji} Pong!`)
         .setDescription('im alive, lol!')

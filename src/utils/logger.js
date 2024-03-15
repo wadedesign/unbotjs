@@ -1,4 +1,4 @@
-import client from '../clientInstance'; // Adjust the import path as needed
+import client from '../clientInstance'; 
 import dotenv from 'dotenv';
 import { EmbedBuilder } from 'discord.js';
 
@@ -19,13 +19,21 @@ const logCommandUsage = async (commandName, user) => {
     return;
   }
 
-  const randomColor = Math.floor(Math.random() * 0xFFFFFF); // Generates a random color
+  const randomColor = Math.floor(Math.random() * 0xFFFFFF); 
   const embed = new EmbedBuilder()
-    .setColor(randomColor) // Sets the color of the embed
-    .setTitle('Command Usage')
-    .setDescription(`Command: \`/${commandName}\` was executed by <@${user.id}>`); // Uses user mention format for clickable mention
+    .setColor(randomColor) 
+    .setTitle('🔧 Command Usage 🔧') 
+    .setDescription(`A command has been used! Details below:`)
+    .addFields(
+      { name: 'Command', value: `\`/${commandName}\``, inline: true },
+      { name: 'Executed By', value: `<@${user.id}>`, inline: true },
+      { name: 'Timestamp', value: `<t:${Math.floor(Date.now() / 1000)}:F>`, inline: false } // Using Discord's Timestamp Styles for better readability
+    )
+    .setThumbnail(user.displayAvatarURL()) 
+    .setTimestamp(); 
 
   await logChannel.send({ embeds: [embed] });
 };
 
 export default logCommandUsage;
+
