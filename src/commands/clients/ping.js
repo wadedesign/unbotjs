@@ -1,53 +1,39 @@
-import { EmbedBuilder, AttachmentBuilder } from 'discord.js';
-import logCommandUsage from '../../utils/logger';
+import { EmbedBuilder } from 'discord.js';
 import dotenv from 'dotenv';
+import logCommandUsage from '../../utils/logger';
+import showLoadingAnimation from '../../utils/loaderAnime/loadingAnimation';
 
 dotenv.config();
 
 const customEmoji = process.env.PINGME;
-const successColor = '#FF9F1C'; // Bright orange color
-const loadingFrames = [
-  '⠋',
-  '⠙',
-  '⠹',
-  '⠸',
-  '⠼',
-  '⠴',
-  '⠦',
-  '⠧',
-  '⠇',
-  '⠏',
-];
+const successColor = '#FF9F1C';
 
-async function execute(_interaction_) {
-  await logCommandUsage(command.name, _interaction_.user);
+async function execute(interaction) {
+    await logCommandUsage(command.name, interaction.user);
 
-  const loadingMessage = await _interaction_.reply(`Pinging ${loadingFrames[0]}`);
+    const loadingMessage = await interaction.reply('looking for the best ping...');
+    await showLoadingAnimation(loadingMessage); // loading animation
 
-  for (let i = 1; i < loadingFrames.length; i++) {
-    await new Promise(resolve => setTimeout(resolve, 200));
-    await loadingMessage.edit(`Pinging ${loadingFrames[i]}`);
-  }
+    const latency = Date.now() - interaction.createdTimestamp;
+    const apiLatency = Math.round(interaction.client.ws.ping);
 
+    const embed = new EmbedBuilder()
+        .setTitle(`${customEmoji} Pong!`)
+        .setDescription("I'm alive and ready to rock your world!")
+        .setColor(successColor)
+        .addFields(
+            { name: '⏱️ Latency', value: `\`${latency}ms\``, inline: true },
+            { name: '⚡ API Latency', value: `\`${apiLatency}ms\``, inline: true }
+        )
+        .setTimestamp();
 
-  const embed = new EmbedBuilder()
-    .setTitle(`${customEmoji} Pong!`)
-    .setDescription('I\'m alive and ready to rock your world!')
-    .setColor(successColor)
-    .addFields(
-      { name: '⏱️ Latency', value: `\`${Date.now() - _interaction_.createdTimestamp}ms\``, inline: true },
-      { name: '⚡ API Latency', value: `\`${Math.round(_interaction_.client.ws.ping)}ms\``, inline: true }
-    )
-    .setTimestamp();
-
-  await loadingMessage.edit({ content: ' ', embeds: [embed],});
+    await interaction.editReply({ content: ' ', embeds: [embed] });
 }
 
 const command = {
-  name: 'ping',
-  description: 'Replies with Pong!',
-  options: [],
-  execute,
+    name: 'ping',
+    description: 'Replies with Pong!',
+    execute,
 };
 
 export default command;
