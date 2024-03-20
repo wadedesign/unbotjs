@@ -10,7 +10,7 @@ const openai = new OpenAI({
 
 export function setupBadWordDetection(client) {
   client.on('messageCreate', async message => {
-    if (message.author.bot) return; // Ignore bots
+    if (message.author.bot) return; // ignore them bots
 
     try {
       const moderation = await openai.moderations.create({ input: message.content });
