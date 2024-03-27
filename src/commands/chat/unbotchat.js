@@ -1,3 +1,8 @@
+
+/**
+ * @todo make it where the user can also mention the bot
+ * 
+ */
 import { EmbedBuilder } from 'discord.js';
 import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
