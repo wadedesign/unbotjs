@@ -61,7 +61,7 @@ async function sendEmbedInThread(message, thread) {
 
 const command = {
   name: 'createthread',
-  description: 'Create a thread from a range of messages by providing the first and last message IDs and the desired thread name.',
+  description: 'Create threat',
   execute: createThreadFromMessages,
 };
 

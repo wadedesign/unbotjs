@@ -8,8 +8,8 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function execute(interaction) {
-    const giver = interaction.user; // The Discord user giving karma
-    const recipient = interaction.options.getUser('user'); // The recipient of the karma
+    const giver = interaction.user; 
+    const recipient = interaction.options.getUser('user'); 
     const amount = interaction.options.getInteger('amount');
     const reason = interaction.options.getString('reason') || 'No reason provided';
 
@@ -19,13 +19,11 @@ async function execute(interaction) {
     }
 
     try {
-        // Date range for today's transactions
         const todayStart = new Date();
         todayStart.setHours(0, 0, 0, 0);
         const todayEnd = new Date();
         todayEnd.setHours(23, 59, 59, 999);
 
-        // Check giver's transactions for today
         let { data: transactionsToday, error: transactionsTodayError } = await supabase
             .from('karma_transactions')
             .select('karma_points_change')
@@ -43,7 +41,6 @@ async function execute(interaction) {
             return;
         }
 
-        // Proceed with updating the recipient's karma
         let { data, error } = await supabase
             .from('karma')
             .select('*')
@@ -65,7 +62,6 @@ async function execute(interaction) {
 
         if (karmaUpdateError) throw karmaUpdateError;
 
-        // Insert transaction for giver
         const { error: transactionError } = await supabase
             .from('karma_transactions')
             .insert([{
@@ -78,7 +74,6 @@ async function execute(interaction) {
 
         if (transactionError) throw transactionError;
 
-        // Reply with success message
         const embed = new EmbedBuilder()
             .setTitle('🌟 Karma Update')
             .setDescription(`🎉 Karma has been bestowed upon ${recipient.username}!`)

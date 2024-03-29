@@ -6,7 +6,6 @@ import { EmbedBuilder } from 'discord.js';
 
 async function execute(interaction) {
     //await logCommandUsage(command.name, interaction.user); // remove this if you dont want it loging to a channel
-    // Using custom emoji function
     const arrowOne = getCustomEmoji('arrowone');
     const arrowTwo = getCustomEmoji('arrowtwo');
     const arrowThree = getCustomEmoji('arrowthree');

@@ -1,4 +1,4 @@
-# unbotjs 
+# unbot
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Discord](https://img.shields.io/discord/123456789012345678?color=7289da&logo=discord&logoColor=white)](https://discord.gg/QWgyf8NE) [![GitHub Issues](https://img.shields.io/github/issues/wadder12/unbotjs.svg)](https://github.com/wadder12/unbotjs/issues)
 
 
@@ -58,3 +58,11 @@ Every effort has been made to explain these functions as clearly and thoroughly 
 
 [Custom Emojis File](docs/public) 
 >docs/public (if you dont want to press the link)
+
+## Running UnbotChat w/ OS LLM 
+
+You can run OS LLMS using OLLAMA and the api 
+- I will provide a command in notused - so you can see how it can be done 
+>[!WARNING]
+> Models will diff on how they get the info 
+> I rec. llama2 uncensored
