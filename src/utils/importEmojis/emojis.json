@@ -1,0 +1,24 @@
+{
+    "_comment": "This is the list of emojis used in the bot. You can change them to your own emojis if you want. Just make sure to keep the same name.",
+    "success": "<:unbotkarma:1216256686151434310>",
+    "channel": "<:unbotchannel:1216256733274574858>",
+    "pingme": "<:unbotpingme:1216277285020106792>",
+    "emoji_success": "<:unbotkarma:1216256686151434310>",
+    "bun_version": "<:bun:1217148739916005396>",
+    "discord_js": "<:Discordjs:1217150143649026151>",
+    "node_js": "<:nodejs:1217152734864867348>",
+    "os": "<:os:1217152444719562832>",
+    "cpu": "<:cpu:1217152175084667020>",
+    "memory": "<:mem:1217152191450710149>",
+    "uptime": "<:uptime:1217152206386495498>",
+    "arrowone": "<:headingarrow:1217230251986518147>",
+    "arrowtwo": "<:extraarrow:1217230240804507708>",
+    "arrowthree": "<:ext2arrow:1217265649491902536>",
+    "arrowfour": "<:extdown1:1217276573661532170>",
+    "medalone": "<:number1:1217609932027727954>",
+    "medaltwo": "<:medal2:1217620563049189467>",
+    "medalthree": "<:medal3:1217620573350531142>",
+    "karma": "<:karmaboard:1217623693161791508>",
+    "logo": "<:logo:1223270389300592702>"
+  }
+  
